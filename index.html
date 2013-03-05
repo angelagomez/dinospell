@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dino Spell</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/css/intro-page.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	
+</head>
+<body>
+  <div id="game">
+		<div id="gameUI">
+			<div id="gameIntro">
+				<a id="gamePlay" class="button" href="">play</a>
+                <a id="howTo" class="button" href="">how to play</a>
+                <a id="highScore" class="button" href="">high score</a>
+                <a id="settings" class="button" href="">settings</a>
+			</div>
+			<div id="gameStats">
+				<p>Coins: <span class="gameScore"></p>
+			</div>
+			<div id="gameComplete">
+			<p><a class="gameReset button" href="">Play again</a></p>
+			</div>
+		</div>
+		<canvas id="dinoSprite" width="700" height="500">
+			<!-- fall back content -->
+  		</canvas>
+	</div>
+</body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="assets/js/dannySprite-animation.js"></script>
+<!-- <script src="assets/js/score.js"></script> -->
+<!-- <script src="assets/js/word-icon-new.js"></script> -->
+<!-- <script src="assets/js/word-icon.js"></script> -->
+</html>
