@@ -27,7 +27,7 @@
 /////////////Paul Irish END//////////////////////
 
 /* =============================================
-  
+	
 	Main Animations: dinoSprite, dinoSky
 	gamebg, foreground
 
@@ -36,10 +36,11 @@
 
 $(document).ready(function() {
 
-	var startPanel = $("#gameCanvas");
+	//var startPanel = $("#gameCanvas");
 	var canvas = document.getElementById('dinoSprite');
 	var background = document.getElementById('gameBg');
 	var foreground = document.getElementById('foreground');
+	var wordIcon = document.getElementById('wordIcon');
 	
 	var ctx = canvas.getContext('2d');
 	ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -47,9 +48,11 @@ $(document).ready(function() {
 
 	canvas.width = 700;
 	canvas.height = 500;
+
 	// Game settings
 	var playGame;
 	var player;
+
 	// Game UI
 	var ui = $("#gameUI");
 	var uiIntro = $("#gameIntro");
@@ -58,7 +61,6 @@ $(document).ready(function() {
 	var uiPlay = $("#gamePlay");
 	var uiReset = $(".gameReset");
 	var uiScore = $(".gameScore");
-
 
 	// Reset and start the game
 	function startGame() {
@@ -210,8 +212,44 @@ $(document).ready(function() {
 			}
 		}
 
+		/*var wordIcon = function(){
+			//getting the wordIcon image	
+			this.wordIcon = new Image();
+			this.wordIcon.src = 'assets/img/word-icon.png';
+			this.walking = false;
+
+			//setting or attributes
+			this.offsetX = 0;
+			this.offsetY = 0;
+			this.posX = 500;
+			this.posY = 365;
+
+			// it was the frameSize all along! 
+			var	frameSize = 100,
+				currentFrame = 0,
+				spriteWidth = 50,
+				spriteHeight = 50,
+				numFrames = 1;
+
+			this.draw = function(frame){
+
+				// changed from "*" to "/"
+				this.offsetX = currentFrame / frameSize;
+				ctx.drawImage(this.wordIcon,this.offsetX,this.offsetY,frameSize,frameSize,this.posX,this.posY, spriteWidth,spriteHeight);
+
+				if(this.walking == true) {
+					if ( (frame % 8) ==  0) {
+						currentFrame = (currentFrame + 1) % numFrames;
+					}
+					// subtracted instead of adding to make it go backwards!
+					this.posX = (this.posX - 1.6) % canvas.width; 
+				}
+			}
+		}*/
+
 		// setting dino, bg, fg, sky and word
 		var dino = new dinoSprite();
+		//var word = new wordIcon();
 		var bg = new gameBg();
 		var fg = new foreground();
 		var sky = new dinoSky();
@@ -219,6 +257,7 @@ $(document).ready(function() {
 
 		$(document).keydown(function() {
 			dino.walking = true;
+			//word.walking = true;
 			bg.walking = true;
 			fg.walking = true;
 			sky.walking = true;
@@ -227,6 +266,7 @@ $(document).ready(function() {
 		$(document).keyup(function() {
 			currentFrame = 0;
 			dino.walking = false;
+			//word.walking = false;
 			bg.walking = false;
 			fg.walking = false;
 			sky.walking = false;
@@ -236,6 +276,7 @@ $(document).ready(function() {
 			window.requestAnimationFrame(animationLoop);
 			sky.draw(windowFrame);
 			bg.draw(windowFrame);
+			//word.draw(windowFrame);
 			dino.draw(windowFrame);
 			fg.draw(windowFrame);
 
@@ -250,5 +291,3 @@ $(document).ready(function() {
 	init();
 
 });
-
-
